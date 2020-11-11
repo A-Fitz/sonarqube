@@ -6,7 +6,7 @@
   <select id="selectAsText" parameterType="map" resultType="InternalProperty">
     select
       kee as "key",
-      is_empty as empty,
+      is_empty as "empty",
       text_value as value,
       created_at as createdAt
     from
@@ -18,7 +18,7 @@
   <select id="selectAsClob" parameterType="map" resultType="InternalProperty">
     select
       kee as "key",
-      is_empty as empty,
+      is_empty as "empty",
       clob_value as value,
       created_at as createdAt
     from

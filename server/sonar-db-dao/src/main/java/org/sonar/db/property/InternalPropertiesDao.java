@@ -150,8 +150,6 @@ public class InternalPropertiesDao implements Dao {
     checkKey(key);
 
     InternalPropertiesMapper mapper = getMapper(dbSession);
-    Loggers.get(InternalPropertiesDao.class)
-            .debug("SELECTBYKEY KEY: " + key); // TODO debugging
     InternalPropertyDto res = enforceSingleElement(key, mapper.selectAsText(singletonList(key)));
     if (res == null) {
       return Optional.empty();

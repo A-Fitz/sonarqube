@@ -77,7 +77,7 @@
 
   <sql id="columnsToScrapPropertyDto">
     p.prop_key as "key",
-    p.is_empty as empty,
+    p.is_empty as "empty",
     p.text_value as textValue,
     p.clob_value as clobValue,
     p.resource_id as resourceId,
