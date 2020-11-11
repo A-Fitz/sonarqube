@@ -41,6 +41,6 @@ public class AddOrganizationUuidToGroups extends DdlChange {
       .setIgnoreOracleUnit(true)
       .setLimit(40)
       .build();
-    context.execute(new AddColumnsBuilder(getDialect(), "groups").addColumn(column).build());
+    context.execute(new AddColumnsBuilder(getDialect(), "`groups`").addColumn(column).build());
   }
 }

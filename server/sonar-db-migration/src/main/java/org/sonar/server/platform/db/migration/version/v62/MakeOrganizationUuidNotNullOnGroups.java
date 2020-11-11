@@ -29,7 +29,7 @@ import static org.sonar.server.platform.db.migration.def.VarcharColumnDef.newVar
 
 public class MakeOrganizationUuidNotNullOnGroups extends DdlChange {
 
-  private static final String TABLE = "groups";
+  private static final String TABLE = "`groups`";
 
   public MakeOrganizationUuidNotNullOnGroups(Database db) {
     super(db);

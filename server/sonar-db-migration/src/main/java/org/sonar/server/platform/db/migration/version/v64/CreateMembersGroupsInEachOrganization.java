@@ -47,7 +47,7 @@ public class CreateMembersGroupsInEachOrganization extends DataChange {
   }
 
   private static void createMembersGroup(Context context, Date now) throws SQLException {
-    MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("groups");
+    MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("`groups`");
     massUpdate.select("SELECT o.uuid FROM organizations o " +
       "WHERE NOT EXISTS (SELECT 1 FROM `groups` g WHERE g.organization_uuid=o.uuid AND g.name=?)").setString(1, GROUP_MEMBERS);
     massUpdate.update("INSERT INTO groups (organization_uuid, name, description, created_at, updated_at) values (?, ?, ?, ?, ?)");
