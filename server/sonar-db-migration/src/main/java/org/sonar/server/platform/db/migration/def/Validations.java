@@ -101,7 +101,7 @@ public class Validations {
    * @throws IllegalArgumentException if {@code identifier} is empty
    * @throws IllegalArgumentException if {@code identifier} is longer than {@code maxSize}
    * @throws IllegalArgumentException if {@code identifier} is not lowercase
-   * @throws IllegalArgumentException if {@code identifier} contains characters others than ASCII letters, ASCII numbers or {@code _}
+   * @throws IllegalArgumentException if {@code identifier} contains characters others than ASCII letters, ASCII numbers, {@code `} or {@code _}
    * @throws IllegalArgumentException if {@code identifier} starts with {@code _} or a number
    */
   static String checkDbIdentifier(@Nullable String identifier, String identifierDesc, int maxSize) {
@@ -117,8 +117,8 @@ public class Validations {
   private static void checkDbIdentifierCharacters(String identifier, String identifierDesc) {
     checkArgument(identifier.length() > 0, "Identifier must not be empty");
     checkArgument(
-      LOWER_CASE_ASCII_LETTERS_CHAR_MATCHER.or(DIGIT_CHAR_MATCHER).or(anyOf("_")).matchesAllOf(identifier),
-      "%s must be lower case and contain only alphanumeric chars or '_', got '%s'", identifierDesc, identifier);
+      LOWER_CASE_ASCII_LETTERS_CHAR_MATCHER.or(DIGIT_CHAR_MATCHER).or(anyOf("_`")).matchesAllOf(identifier),
+      "%s must be lower case and contain only alphanumeric chars or '_' or '`', got '%s'", identifierDesc, identifier);
     checkArgument(
       DIGIT_CHAR_MATCHER.or(UNDERSCORE_CHAR_MATCHER).matchesNoneOf(identifier.subSequence(0, 1)),
       "%s must not start by a number or '_', got '%s'", identifierDesc, identifier);
