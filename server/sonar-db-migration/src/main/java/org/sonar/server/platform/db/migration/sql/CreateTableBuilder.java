@@ -239,7 +239,7 @@ public class CreateTableBuilder {
 
   private void appendPkConstraintName(StringBuilder res) {
     if (pkConstraintName == null) {
-      res.append("pk_").append(tableName);
+      res.append("pk_").append(tableName.replaceAll("[`]", ""));
     } else {
       res.append(pkConstraintName.toLowerCase(Locale.ENGLISH));
     }
@@ -271,16 +271,16 @@ public class CreateTableBuilder {
   }
 
   private static String createSequenceFor(String tableName) {
-    return "CREATE SEQUENCE " + tableName + "_seq START WITH 1 INCREMENT BY 1";
+    return "CREATE SEQUENCE " + tableName.replaceAll("[`]", "") + "_seq START WITH 1 INCREMENT BY 1";
   }
 
   static String createOracleTriggerForTable(String tableName) {
-    return "CREATE OR REPLACE TRIGGER " + tableName + "_idt" +
+    return "CREATE OR REPLACE TRIGGER " + tableName.replaceAll("[`]", "") + "_idt" +
       " BEFORE INSERT ON " + tableName +
       " FOR EACH ROW" +
       " BEGIN" +
       " IF :new.id IS null THEN" +
-      " SELECT " + tableName + "_seq.nextval INTO :new.id FROM dual;" +
+      " SELECT " + tableName.replaceAll("[`]", "") + "_seq.nextval INTO :new.id FROM dual;" +
       " END IF;" +
       " END;";
   }
