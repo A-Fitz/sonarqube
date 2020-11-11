@@ -51,7 +51,7 @@ public class PopulateIsRootColumnOnTableUsers extends DataChange {
       " from users u" +
       " inner join groups_users gu on gu.user_id = u.id" +
       " inner join group_roles gr on gr.group_id = gu.group_id" +
-      " inner join groups g on g.id = gu.group_id" +
+      " inner join `groups` g on g.id = gu.group_id" +
       " where" +
       " gr.role = ?" +
       " and gr.resource_id is null" +

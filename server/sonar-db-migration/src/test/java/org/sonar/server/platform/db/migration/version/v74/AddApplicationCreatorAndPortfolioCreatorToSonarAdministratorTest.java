@@ -135,7 +135,7 @@ public class AddApplicationCreatorAndPortfolioCreatorToSonarAdministratorTest {
   }
 
   private Long getGroupId(String groupName) {
-    return (Long) db.selectFirst("SELECT id FROM groups WHERE name = '" + groupName + "'").get("ID");
+    return (Long) db.selectFirst("SELECT id FROM `groups` WHERE name = '" + groupName + "'").get("ID");
   }
 
   private void assertGroupRoles(Tuple... expectedTuples) {

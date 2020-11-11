@@ -84,7 +84,7 @@ public class SearchAction implements UserGroupsWsAction {
         new Change("6.4", "'default' response field has been added"));
 
     action.createParam(PARAM_ORGANIZATION_KEY)
-      .setDescription("Key of organization. If not set then groups are searched in default organization.")
+      .setDescription("Key of organization. If not set then `groups` are searched in default organization.")
       .setExampleValue("my-org")
       .setSince("6.2")
       .setInternal(true);

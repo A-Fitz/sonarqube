@@ -62,7 +62,7 @@ public class PopulateOrganizationUuidOfGroupsTest {
     underTest.execute();
 
     assertThat(dbTester.countRowsOfTable("groups")).isEqualTo(3);
-    assertThat(dbTester.countSql("select count(1) from groups where organization_uuid='" + AN_ORG_UUID + "'")).isEqualTo(3);
+    assertThat(dbTester.countSql("select count(1) from `groups` where organization_uuid='" + AN_ORG_UUID + "'")).isEqualTo(3);
   }
 
   @Test

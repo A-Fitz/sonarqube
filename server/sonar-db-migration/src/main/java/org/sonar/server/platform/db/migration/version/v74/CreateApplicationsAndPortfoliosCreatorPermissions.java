@@ -46,7 +46,7 @@ public class CreateApplicationsAndPortfoliosCreatorPermissions extends DataChang
   @Override
   protected void execute(Context context) throws SQLException {
     Date now = new Date(system2.now());
-    Long adminGroupId = context.prepareSelect("SELECT id FROM groups WHERE name=?")
+    Long adminGroupId = context.prepareSelect("SELECT id FROM `groups` WHERE name=?")
       .setString(1, DefaultGroups.ADMINISTRATORS)
       .get(row -> row.getLong(1));
     String templateKey = context.prepareSelect("SELECT default_perm_template_view FROM organizations WHERE kee=?")

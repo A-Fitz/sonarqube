@@ -162,7 +162,7 @@ public class CpdExecutor {
 
   @VisibleForTesting final void saveDuplications(final DefaultInputComponent component, List<CloneGroup> duplications) {
     if (duplications.size() > MAX_CLONE_GROUP_PER_FILE) {
-      LOG.warn("Too many duplication groups on file {}. Keep only the first {} groups.", component, MAX_CLONE_GROUP_PER_FILE);
+      LOG.warn("Too many duplication `groups` on file {}. Keep only the first {} groups.", component, MAX_CLONE_GROUP_PER_FILE);
     }
     Iterable<ScannerReport.Duplication> reportDuplications = duplications.stream()
       .limit(MAX_CLONE_GROUP_PER_FILE)

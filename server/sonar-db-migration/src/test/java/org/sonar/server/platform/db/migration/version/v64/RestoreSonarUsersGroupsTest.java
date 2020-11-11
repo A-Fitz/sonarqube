@@ -282,7 +282,7 @@ public class RestoreSonarUsersGroupsTest {
 
   private void checkUserRolesOnSonarUsers(Tuple... expectedTuples) {
     List<Tuple> tuples = db.select("select gr.role, gr.resource_id, gr.organization_uuid from group_roles gr " +
-      "inner join groups g on g.id=gr.group_id " +
+      "inner join `groups` g on g.id=gr.group_id " +
       "where g.name='sonar-users'").stream()
       .map(map -> new Tuple(map.get("ROLE"), map.get("RESOURCE_ID"), map.get("ORGANIZATION_UUID")))
       .collect(Collectors.toList());
@@ -291,7 +291,7 @@ public class RestoreSonarUsersGroupsTest {
 
   private void checkPermissionTemplatesOnSonarUsers(Tuple... expectedTuples) {
     List<Tuple> tuples = db.select("select ptg.permission_reference, ptg.template_id, ptg.created_at, ptg.updated_at from perm_templates_groups ptg " +
-      "inner join groups g on g.id=ptg.group_id " +
+      "inner join `groups` g on g.id=ptg.group_id " +
       "where g.name='sonar-users'").stream()
       .map(map -> new Tuple(map.get("PERMISSION_REFERENCE"), map.get("TEMPLATE_ID"), map.get("CREATED_AT"), map.get("UPDATED_AT")))
       .collect(Collectors.toList());
@@ -299,7 +299,7 @@ public class RestoreSonarUsersGroupsTest {
   }
 
   private Map<String, Object> selectSonarUsersGroup() {
-    return db.selectFirst("select name, description, organization_uuid, created_at, updated_at from groups where name='sonar-users'");
+    return db.selectFirst("select name, description, organization_uuid, created_at, updated_at from `groups` where name='sonar-users'");
   }
 
   private long insertGroup(String name, String description, Date createdAt, Date updatedAt) {
@@ -310,7 +310,7 @@ public class RestoreSonarUsersGroupsTest {
       "ORGANIZATION_UUID", DEFAULT_ORGANIZATION_UUID,
       "CREATED_AT", createdAt,
       "UPDATED_AT", updatedAt);
-    return (Long) db.selectFirst(format("select id from groups where name='%s'", name)).get("ID");
+    return (Long) db.selectFirst(format("select id from `groups` where name='%s'", name)).get("ID");
   }
 
   private void insertDefaultGroupProperty(@Nullable String groupName) {

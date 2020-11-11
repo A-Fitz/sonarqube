@@ -77,7 +77,7 @@ public class GroupsAction implements UsersWsAction {
   @Override
   public void define(NewController context) {
     NewAction action = context.createAction("groups")
-      .setDescription("Lists the groups a user belongs to. <br/>" +
+      .setDescription("Lists the `groups` a user belongs to. <br/>" +
         "Requires Administer System permission.")
       .setHandler(this)
       .setResponseExample(getClass().getResource("groups-example.json"))

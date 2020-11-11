@@ -254,7 +254,7 @@ public class CreateMembersGroupsInEachOrganizationTest {
   }
 
   private long selectMembersGroupId(String organization) {
-    return (Long) db.selectFirst(format("select id from groups where name='%s' and organization_uuid='%s'", "Members", organization)).get("ID");
+    return (Long) db.selectFirst(format("select id from `groups` where name='%s' and organization_uuid='%s'", "Members", organization)).get("ID");
   }
 
   private void insertOrganization(String uuid, @Nullable String defaultPermissionTemplateProject) {
@@ -298,7 +298,7 @@ public class CreateMembersGroupsInEachOrganizationTest {
       "ORGANIZATION_UUID", organizationUuid,
       "CREATED_AT", PAST,
       "UPDATED_AT", PAST);
-    return (Long) db.selectFirst(format("select id from groups where name='%s' and organization_uuid='%s'", "Members", organizationUuid)).get("ID");
+    return (Long) db.selectFirst(format("select id from `groups` where name='%s' and organization_uuid='%s'", "Members", organizationUuid)).get("ID");
   }
 
   private void setupDefaultOrganization() {

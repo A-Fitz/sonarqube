@@ -49,10 +49,10 @@ public class PopulateInitialSchema extends DataChange {
   }
 
   private void insertGroups(Context context) throws SQLException {
-    truncateTable(context, "groups");
+    truncateTable(context, "`groups`");
 
     Date now = new Date(system2.now());
-    Upsert upsert = context.prepareUpsert("insert into groups (name, description, created_at, updated_at) values (?, ?, ?, ?)");
+    Upsert upsert = context.prepareUpsert("insert into `groups` (name, description, created_at, updated_at) values (?, ?, ?, ?)");
     upsert.setString(1, ADMINS_GROUP)
       .setString(2, "System administrators")
       .setDate(3, now)
@@ -72,7 +72,7 @@ public class PopulateInitialSchema extends DataChange {
     truncateTable(context, "group_roles");
 
     // admin group
-    Upsert upsert = context.prepareUpsert("insert into group_roles (group_id, resource_id, role) values ((select id from groups where name='" + ADMINS_GROUP + "'), null, ?)");
+    Upsert upsert = context.prepareUpsert("insert into group_roles (group_id, resource_id, role) values ((select id from `groups` where name='" + ADMINS_GROUP + "'), null, ?)");
     upsert.setString(1, "admin").addBatch();
     upsert.setString(1, "profileadmin").addBatch();
     upsert.setString(1, "gateadmin").addBatch();
@@ -111,7 +111,7 @@ public class PopulateInitialSchema extends DataChange {
     truncateTable(context, "groups_users");
 
     Upsert upsert = context.prepareUpsert("insert into groups_users (user_id, group_id) values " +
-      "((select id from users where login='" + ADMIN_USER + "'), (select id from groups where name=?))");
+      "((select id from users where login='" + ADMIN_USER + "'), (select id from `groups` where name=?))");
     upsert.setString(1, ADMINS_GROUP).addBatch();
     upsert.setString(1, USERS_GROUP).addBatch();
     upsert

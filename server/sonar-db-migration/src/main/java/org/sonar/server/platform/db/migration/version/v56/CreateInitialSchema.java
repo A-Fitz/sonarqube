@@ -576,7 +576,7 @@ public class CreateInitialSchema extends DdlChange {
 
   private void createGroups(Context context) throws SQLException {
     context.execute(
-      newTableBuilder("groups")
+      newTableBuilder("`groups`")
         .addPkColumn(newIntegerColumnDefBuilder().setColumnName("id").setIsNullable(false).build(), AUTO_INCREMENT)
         .addColumn(newLenientVarcharBuilder("name").setLimit(500).setIsNullable(true).build())
         .addColumn(newLenientVarcharBuilder("description").setLimit(200).setIsNullable(true).build())

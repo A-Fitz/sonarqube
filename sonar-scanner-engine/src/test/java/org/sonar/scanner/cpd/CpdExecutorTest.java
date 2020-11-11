@@ -160,7 +160,7 @@ public class CpdExecutorTest {
     assertThat(reader.readComponentDuplications(batchComponent1.scannerId())).toIterable().hasSize(CpdExecutor.MAX_CLONE_GROUP_PER_FILE);
 
     assertThat(logTester.logs(LoggerLevel.WARN))
-      .contains("Too many duplication groups on file " + batchComponent1 + ". Keep only the first " + CpdExecutor.MAX_CLONE_GROUP_PER_FILE + " groups.");
+      .contains("Too many duplication `groups` on file " + batchComponent1 + ". Keep only the first " + CpdExecutor.MAX_CLONE_GROUP_PER_FILE + " groups.");
   }
 
   @Test

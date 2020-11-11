@@ -56,7 +56,7 @@
   <sql id="groupsByQuery">
     from (
       select g.id as groupId, g.name as name, gr.role as permission, gr.resource_id as componentId, gr.id as id
-      from groups g
+      from `groups` g
       left join group_roles gr on g.id = gr.group_id
       where
       g.organization_uuid = #{query.organizationUuid,jdbcType=VARCHAR}
@@ -99,7 +99,7 @@
       (
       select gr.group_id as groupId, gr.resource_id as componentId, gr.role as permission, g.name as name, gr.organization_uuid as organizationUuid
       from group_roles gr
-      inner join groups g ON g.id = gr.group_id
+      inner join `groups` g ON g.id = gr.group_id
       where gr.organization_uuid = #{organizationUuid,jdbcType=VARCHAR} and
       gr.group_id is not null
 

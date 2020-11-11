@@ -78,7 +78,7 @@ public class PermissionIndexerDao {
     "      groups.id  AS group_id " +
     "      FROM projects " +
     "      INNER JOIN group_roles ON group_roles.resource_id = projects.id AND group_roles.role = 'user' " +
-    "      INNER JOIN groups ON groups.id = group_roles.group_id " +
+    "      INNER JOIN `groups` ON groups.id = group_roles.group_id " +
     "      WHERE " +
     "        (projects.qualifier = 'TRK' " +
     "         or  projects.qualifier = 'VW' " +

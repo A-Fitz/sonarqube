@@ -329,7 +329,7 @@ public class IntegrateCrossProjectDuplicationsTest {
     underTest.computeCpd(ORIGIN_FILE, originBlocks, duplicatedBlocks);
 
     assertThat(duplicationRepository.getDuplications(ORIGIN_FILE)).hasSize(100);
-    assertThat(logTester.logs(LoggerLevel.WARN)).containsOnly("Too many duplication groups on file " + ORIGIN_FILE_KEY + ". Keeping only the first 100 groups.");
+    assertThat(logTester.logs(LoggerLevel.WARN)).containsOnly("Too many duplication `groups` on file " + ORIGIN_FILE_KEY + ". Keeping only the first 100 groups.");
   }
 
   @Test

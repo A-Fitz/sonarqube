@@ -49,7 +49,7 @@ public class CreateMembersGroupsInEachOrganization extends DataChange {
   private static void createMembersGroup(Context context, Date now) throws SQLException {
     MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("groups");
     massUpdate.select("SELECT o.uuid FROM organizations o " +
-      "WHERE NOT EXISTS (SELECT 1 FROM groups g WHERE g.organization_uuid=o.uuid AND g.name=?)").setString(1, GROUP_MEMBERS);
+      "WHERE NOT EXISTS (SELECT 1 FROM `groups` g WHERE g.organization_uuid=o.uuid AND g.name=?)").setString(1, GROUP_MEMBERS);
     massUpdate.update("INSERT INTO groups (organization_uuid, name, description, created_at, updated_at) values (?, ?, ?, ?, ?)");
     massUpdate.execute((row, update) -> {
       update
@@ -66,7 +66,7 @@ public class CreateMembersGroupsInEachOrganization extends DataChange {
     MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("permission templates on groups");
     massUpdate.select("SELECT g.id, pt.id FROM organizations o " +
       "INNER JOIN permission_templates pt ON pt.kee=o.default_perm_template_project " +
-      "INNER JOiN groups g ON g.organization_uuid=o.uuid AND g.name=? " +
+      "INNER JOiN `groups` g ON g.organization_uuid=o.uuid AND g.name=? " +
       "WHERE NOT EXISTS (SELECT 1 FROM perm_templates_groups ptg WHERE ptg.group_id=g.id AND ptg.template_id=pt.id)")
       .setString(1, GROUP_MEMBERS);
     massUpdate.update("INSERT INTO perm_templates_groups (group_id, template_id, permission_reference, created_at, updated_at) values (?, ?, ?, ?, ?)");

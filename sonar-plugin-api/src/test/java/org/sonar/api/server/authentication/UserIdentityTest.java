@@ -202,7 +202,7 @@ public class UserIdentityTest {
   @Test
   public void fail_when_groups_are_null() {
     thrown.expect(NullPointerException.class);
-    thrown.expectMessage("Groups cannot be null, please don't use this method if groups should not be synchronized.");
+    thrown.expectMessage("Groups cannot be null, please don't use this method if `groups` should not be synchronized.");
 
     UserIdentity.builder()
       .setProviderLogin("john")

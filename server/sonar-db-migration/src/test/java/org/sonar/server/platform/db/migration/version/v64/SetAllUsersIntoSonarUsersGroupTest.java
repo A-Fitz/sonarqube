@@ -120,7 +120,7 @@ public class SetAllUsersIntoSonarUsersGroupTest {
       "ORGANIZATION_UUID", "ORGANIZATION_UUID",
       "CREATED_AT", new Date(),
       "UPDATED_AT", new Date());
-    return (Long) db.selectFirst(format("select id from groups where name='%s'", name)).get("ID");
+    return (Long) db.selectFirst(format("select id from `groups` where name='%s'", name)).get("ID");
   }
 
   private void insertUserGroups(long userId, Long... groupIds) {

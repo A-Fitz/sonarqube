@@ -218,7 +218,7 @@ public class BackendCleanup {
    * Groups sonar-users is referenced by the default organization as its default group.
    */
   private static void truncateGroups(String tableName, Statement ddlStatement, Connection connection) throws SQLException {
-    try (PreparedStatement preparedStatement = connection.prepareStatement("delete from groups where name <> ?")) {
+    try (PreparedStatement preparedStatement = connection.prepareStatement("delete from `groups` where name <> ?")) {
       preparedStatement.setString(1, "sonar-users");
       preparedStatement.execute();
       // commit is useless on some databases

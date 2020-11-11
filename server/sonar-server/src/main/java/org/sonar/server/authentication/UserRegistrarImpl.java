@@ -231,7 +231,7 @@ public class UserRegistrarImpl implements UserRegistrar {
     String userLogin = userDto.getLogin();
     Set<String> userGroups = new HashSet<>(dbClient.groupMembershipDao().selectGroupsByLogins(dbSession, singletonList(userLogin)).get(userLogin));
     Set<String> identityGroups = userIdentity.getGroups();
-    LOGGER.debug("List of groups returned by the identity provider '{}'", identityGroups);
+    LOGGER.debug("List of `groups` returned by the identity provider '{}'", identityGroups);
 
     Collection<String> groupsToAdd = Sets.difference(identityGroups, userGroups);
     Collection<String> groupsToRemove = Sets.difference(userGroups, identityGroups);

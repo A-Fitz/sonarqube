@@ -4,7 +4,7 @@
 <mapper namespace="org.sonar.db.user.GroupMembershipMapper">
 
   <sql id="commonClauses">
-    FROM groups g
+    FROM `groups` g
     LEFT JOIN groups_users gu ON gu.group_id=g.id AND gu.user_id=#{userId}
     <where>
       AND g.organization_uuid=#{organizationUuid}
@@ -35,7 +35,7 @@
 
   <select id="countUsersByGroup" parameterType="int" resultType="org.sonar.db.user.GroupUserCount">
     SELECT g.name as groupName, count(gu.user_id) as userCount
-    FROM groups g
+    FROM `groups` g
     LEFT JOIN groups_users gu ON gu.group_id=g.id
     <where>
       g.id in
@@ -50,7 +50,7 @@
     SELECT u.login as login, g.name as groupName
     FROM users u
     LEFT JOIN groups_users gu ON gu.user_id=u.id
-    INNER JOIN groups g ON gu.group_id=g.id
+    INNER JOIN `groups` g ON gu.group_id=g.id
     <where>
       u.login in
       <foreach collection="logins" open="(" close=")" item="login" separator=",">
@@ -64,7 +64,7 @@
     SELECT u.login as login, g.name as groupName
     FROM users u
     LEFT JOIN groups_users gu ON gu.user_id=u.id
-    INNER JOIN groups g ON gu.group_id=g.id
+    INNER JOIN `groups` g ON gu.group_id=g.id
     <where>
       u.login in
       <foreach collection="logins" open="(" close=")" item="login" separator=",">

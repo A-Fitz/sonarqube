@@ -42,7 +42,7 @@ public class PopulateColumnDefaultGroupIdOfOrganizations extends DataChange {
   private void populateDefaultGroupId(Context context, String groupName) throws SQLException {
     MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("organizations");
     massUpdate.select("SELECT o.uuid, g.id FROM organizations o " +
-      "INNER JOIN groups g ON g.organization_uuid=o.uuid AND g.name=? " +
+      "INNER JOIN `groups` g ON g.organization_uuid=o.uuid AND g.name=? " +
       "WHERE o.default_group_id IS NULL")
       .setString(1, groupName);
     massUpdate.update("UPDATE organizations SET default_group_id=?,updated_at=? WHERE uuid=?");

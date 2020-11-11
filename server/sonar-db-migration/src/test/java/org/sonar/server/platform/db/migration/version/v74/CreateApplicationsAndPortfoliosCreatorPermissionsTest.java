@@ -199,7 +199,7 @@ public class CreateApplicationsAndPortfoliosCreatorPermissionsTest {
   }
 
   private Long getIdOfGroup(String key) {
-    return (Long) db.selectFirst("SELECT id FROM groups WHERE name='" + key + "'")
+    return (Long) db.selectFirst("SELECT id FROM `groups` WHERE name='" + key + "'")
       .get("ID");
   }
 

@@ -56,7 +56,7 @@ public class PopulateHotspotAdminPermissionOnTemplatesGroups extends DataChange 
       .setString(1, ISSUE_ADMIN_ROLE)
       .setString(2, HOTSPOT_ADMIN_ROLE);
     massUpdate.update("INSERT INTO perm_templates_groups (group_id, template_id, permission_reference, created_at, updated_at) values (?,?,?,?,?)");
-    massUpdate.rowPluralName("permission templates groups roles");
+    massUpdate.rowPluralName("permission templates `groups` roles");
     massUpdate.execute((row, update) -> handle(row, update, now));
   }
 

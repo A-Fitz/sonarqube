@@ -200,7 +200,7 @@ public final class UserIdentity {
      * @since 5.5
      */
     public Builder setGroups(Set<String> groups) {
-      requireNonNull(groups, "Groups cannot be null, please don't use this method if groups should not be synchronized.");
+      requireNonNull(groups, "Groups cannot be null, please don't use this method if `groups` should not be synchronized.");
       groups.forEach(UserGroupValidation::validateGroupName);
       this.groupsProvided = true;
       this.groups = groups;

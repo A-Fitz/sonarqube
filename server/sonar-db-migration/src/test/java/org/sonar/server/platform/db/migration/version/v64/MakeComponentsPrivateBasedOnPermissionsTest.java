@@ -438,7 +438,7 @@ public class MakeComponentsPrivateBasedOnPermissionsTest {
       "GROUPS",
       "ORGANIZATION_UUID", "org" + random.nextInt(12),
       "NAME", name);
-    return ((Long) db.selectFirst("select id as \"ID\" from groups where name='" + name + "'").get("ID")).intValue();
+    return ((Long) db.selectFirst("select id as \"ID\" from `groups` where name='" + name + "'").get("ID")).intValue();
   }
 
   private void insertUserPermission(String role, @Nullable Long resourceId, int userId) {

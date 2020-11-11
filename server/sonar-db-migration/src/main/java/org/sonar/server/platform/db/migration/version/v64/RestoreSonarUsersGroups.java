@@ -137,7 +137,7 @@ public class RestoreSonarUsersGroups extends DataChange {
   }
 
   private static void updateSonarUsersGroupDescription(Context context, String description, long sonarUsersGroupId, Date now) throws SQLException {
-    context.prepareUpsert("UPDATE groups SET description=?, updated_at=? WHERE id=?")
+    context.prepareUpsert("UPDATE `groups` SET description=?, updated_at=? WHERE id=?")
       .setString(1, description)
       .setDate(2, now)
       .setLong(3, sonarUsersGroupId)
@@ -175,7 +175,7 @@ public class RestoreSonarUsersGroups extends DataChange {
 
   @CheckForNull
   private static Group selectGroupByName(Context context, String name) throws SQLException {
-    return context.prepareSelect("SELECT id, name, description FROM groups WHERE name=?")
+    return context.prepareSelect("SELECT id, name, description FROM `groups` WHERE name=?")
       .setString(1, name)
       .get(Group::new);
   }

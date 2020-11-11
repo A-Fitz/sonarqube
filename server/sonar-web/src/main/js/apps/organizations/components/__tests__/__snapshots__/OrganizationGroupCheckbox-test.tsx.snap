@@ -39,7 +39,7 @@ exports[`should be able to toggle check 3`] = `
 </li>
 `;
 
-exports[`should disabled default groups 1`] = `
+exports[`should disabled default groups 1`] = `
 <li
   className="capitalize list-item-checkable-link disabled"
   onClick={[Function]}

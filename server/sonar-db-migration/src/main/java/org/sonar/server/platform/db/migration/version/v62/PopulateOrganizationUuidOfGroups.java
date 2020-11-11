@@ -45,8 +45,8 @@ public class PopulateOrganizationUuidOfGroups extends DataChange {
     String organizationUuid = selectDefaultOrganizationUuid(context);
 
     MassUpdate massUpdate = context.prepareMassUpdate();
-    massUpdate.select("select id from groups where organization_uuid is null");
-    massUpdate.update("update groups set organization_uuid=?, updated_at=? where id=?");
+    massUpdate.select("select id from `groups` where organization_uuid is null");
+    massUpdate.update("update `groups` set organization_uuid=?, updated_at=? where id=?");
     massUpdate.rowPluralName("groups");
     massUpdate.execute((row, update) -> {
       int groupId = row.getInt(1);

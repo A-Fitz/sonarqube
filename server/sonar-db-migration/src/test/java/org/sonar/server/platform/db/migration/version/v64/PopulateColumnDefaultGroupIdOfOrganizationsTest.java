@@ -154,7 +154,7 @@ public class PopulateColumnDefaultGroupIdOfOrganizationsTest {
       "ORGANIZATION_UUID", organization,
       "CREATED_AT", new Date(PAST),
       "UPDATED_AT", new Date(PAST));
-    return (Long) db.selectFirst(format("select id from groups where name='%s' and organization_uuid='%s'", name, organization)).get("ID");
+    return (Long) db.selectFirst(format("select id from `groups` where name='%s' and organization_uuid='%s'", name, organization)).get("ID");
   }
 
   private void setupDefaultOrganization() {

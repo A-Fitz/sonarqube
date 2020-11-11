@@ -83,7 +83,7 @@ public class PopulateInitialSchemaTest {
   private List<String> selectRoles(String groupName) {
     List<Map<String, Object>> rows = db.select("select gr.role as \"role\" " +
       "from group_roles gr " +
-      "inner join groups g on gr.group_id = g.id " +
+      "inner join `groups` g on gr.group_id = g.id " +
       "where g.name='" + groupName + "'");
     return rows.stream()
       .map(row -> (String) row.get("role"))
@@ -93,14 +93,14 @@ public class PopulateInitialSchemaTest {
   private void verifyGroup(String expectedName, String expectedDescription) {
     Map<String, Object> cols = db.selectFirst("select name as \"name\", description as \"description\", " +
       "created_at as \"created_at\", updated_at as \"updated_at\" " +
-      "from groups where name='" + expectedName + "'");
+      "from `groups` where name='" + expectedName + "'");
     assertThat(cols.get("name")).isEqualTo(expectedName);
     assertThat(cols.get("description")).isEqualTo(expectedDescription);
     assertThat(cols.get("created_at")).isNotNull();
   }
 
   private void verifyMembershipOfAdminUser() {
-    List<Map<String, Object>> rows = db.select("select g.name as \"groupName\" from groups g " +
+    List<Map<String, Object>> rows = db.select("select g.name as \"groupName\" from `groups` g " +
       "inner join groups_users gu on gu.group_id = g.id " +
       "inner join users u on gu.user_id = u.id " +
       "where u.login='admin'");

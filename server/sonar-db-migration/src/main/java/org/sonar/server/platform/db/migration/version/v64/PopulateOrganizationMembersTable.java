@@ -68,7 +68,7 @@ public class PopulateOrganizationMembersTable extends DataChange {
         "UNION " +
         "SELECT distinct g.organization_uuid, gu.user_id FROM groups_users gu " +
         "INNER JOIN users u ON u.id=gu.user_id AND u.active=? " +
-        "INNER JOIN groups g ON g.id=gu.group_id " +
+        "INNER JOIN `groups` g ON g.id=gu.group_id " +
         "WHERE NOT EXISTS (SELECT 1 FROM organization_members om WHERE om.user_id=gu.user_id AND om.organization_uuid=g.organization_uuid)")
       .setBoolean(1, true)
       .setBoolean(2, true);

@@ -176,7 +176,7 @@
       g.name AS name,
       ptg.permission_reference AS permission,
       ptg.template_id AS templateId
-    FROM groups g
+    FROM `groups` g
     LEFT JOIN perm_templates_groups ptg ON
       ptg.group_id=g.id
     where
@@ -285,7 +285,7 @@
         ptg.created_at as createdAt,
         ptg.updated_at as updatedAt
       FROM perm_templates_groups ptg
-      INNER JOIN groups g ON
+      INNER JOIN `groups` g ON
         g.id=ptg.group_id
       UNION ALL
         SELECT
@@ -319,7 +319,7 @@
         and ptu.template_id=#{templateId}
       </where>
       UNION
-      -- from template groups except anyone group
+      -- from template `groups` except anyone group
       select ptg.permission_reference as permission_key
       from perm_templates_groups ptg
       inner join groups_users gu on ptg.group_id = gu.group_id
@@ -364,7 +364,7 @@
     SELECT count(1) as count, permission, templateId
     FROM
     (SELECT g.name as name, ptg.permission_reference as permission, ptg.template_id as templateId
-    FROM groups g
+    FROM `groups` g
     INNER JOIN perm_templates_groups ptg ON ptg.group_id=g.id
     UNION
     -- Add Anyone group permission
@@ -416,7 +416,7 @@
       ptg.created_at as createdAt,
       ptg.updated_at as updatedAt
     FROM perm_templates_groups ptg
-    INNER JOIN groups g ON g.id=ptg.group_id
+    INNER JOIN `groups` g ON g.id=ptg.group_id
     <where>
       ptg.group_id=#{groupId,jdbcType=INTEGER}
     </where>

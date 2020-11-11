@@ -57,7 +57,7 @@
   </select>
 
   <sql id="sqlSelectByQuery">
-    FROM groups g
+    FROM `groups` g
     LEFT JOIN qprofile_edit_groups qeg ON qeg.group_id=g.id AND qeg.qprofile_uuid=#{query.qProfileUuid, jdbcType=VARCHAR}
     <where>
       AND g.organization_uuid=#{query.organizationUuid,jdbcType=VARCHAR}

@@ -168,7 +168,7 @@ public class PopulateIsRootColumnOnTableUsersTest {
 
   private int insertGroup(String groupName) {
     dbTester.executeInsert("groups", "name", groupName);
-    Long groupId = (Long) dbTester.selectFirst("select id as \"id\" from groups where name = '" + groupName + "'").get("id");
+    Long groupId = (Long) dbTester.selectFirst("select id as \"id\" from `groups` where name = '" + groupName + "'").get("id");
     return groupId.intValue();
   }
 

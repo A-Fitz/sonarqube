@@ -48,7 +48,7 @@ public class SetAllUsersIntoSonarUsersGroup extends DataChange {
   }
 
   private static long selectSonarUsersGroup(Context context) throws SQLException {
-    return context.prepareSelect("SELECT id FROM groups WHERE name=?")
+    return context.prepareSelect("SELECT id FROM `groups` WHERE name=?")
       .setString(1, "sonar-users")
       .get(row -> row.getLong(1));
   }

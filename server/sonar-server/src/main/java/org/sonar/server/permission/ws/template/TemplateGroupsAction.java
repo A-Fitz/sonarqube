@@ -74,8 +74,8 @@ public class TemplateGroupsAction implements PermissionsWsAction {
     WebService.NewAction action = context.createAction("template_groups")
       .setSince("5.2")
       .setInternal(true)
-      .setDescription("Lists the groups with their permission as individual groups rather than through user affiliation on the chosen template.<br />" +
-        "This service defaults to all groups, but can be limited to groups with a specific permission by providing the desired permission.<br>" +
+      .setDescription("Lists the `groups` with their permission as individual `groups` rather than through user affiliation on the chosen template.<br />" +
+        "This service defaults to all groups, but can be limited to `groups` with a specific permission by providing the desired permission.<br>" +
         "Requires the following permission: 'Administer System'.")
       .addPagingParams(DEFAULT_PAGE_SIZE, RESULTS_MAX_SIZE)
       .setResponseExample(getClass().getResource("template_groups-example.json"))

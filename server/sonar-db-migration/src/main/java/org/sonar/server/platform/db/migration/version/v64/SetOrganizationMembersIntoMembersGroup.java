@@ -37,10 +37,10 @@ public class SetOrganizationMembersIntoMembersGroup extends DataChange {
     MassUpdate massUpdate = context.prepareMassUpdate().rowPluralName("users not belonging to 'members' group");
     massUpdate.select("SELECT u.id, g.id FROM users u " +
       "INNER JOIN organization_members om ON om.user_id=u.id " +
-      "INNER JOIN groups g ON g.organization_uuid=om.organization_uuid AND g.name=? " +
+      "INNER JOIN `groups` g ON g.organization_uuid=om.organization_uuid AND g.name=? " +
       "WHERE u.active=? AND NOT EXISTS " +
       "(SELECT 1 FROM groups_users gu " +
-      "INNER JOIN groups g on g.id=gu.group_id AND g.name=? " +
+      "INNER JOIN `groups` g on g.id=gu.group_id AND g.name=? " +
       "WHERE gu.user_id=u.id)")
       .setString(1, MEMBERS_NAME)
       .setBoolean(2, true)

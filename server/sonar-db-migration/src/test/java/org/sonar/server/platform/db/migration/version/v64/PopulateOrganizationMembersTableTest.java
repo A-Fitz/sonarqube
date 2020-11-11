@@ -280,7 +280,7 @@ public class PopulateOrganizationMembersTableTest {
   private int insertNewGroup(String organizationUuid) {
     String groupName = randomAlphabetic(10);
     db.executeInsert("GROUPS", "NAME", groupName, "ORGANIZATION_UUID", organizationUuid);
-    return ((Long) db.selectFirst(format("select ID from groups where name='%s' and organization_uuid='%s'", groupName, organizationUuid)).get("ID")).intValue();
+    return ((Long) db.selectFirst(format("select ID from `groups` where name='%s' and organization_uuid='%s'", groupName, organizationUuid)).get("ID")).intValue();
   }
 
   private void insertUserGroup(int userId, int groupId) {

@@ -253,7 +253,7 @@ public class SupportPrivateProjectInDefaultPermissionTemplateTest {
       "ORGANIZATION_UUID", organizationUuid,
       "NAME", name);
 
-    return ((Long) db.selectFirst("select id as \"ID\" from groups where name='" + name + "'").get("ID")).intValue();
+    return ((Long) db.selectFirst("select id as \"ID\" from `groups` where name='" + name + "'").get("ID")).intValue();
   }
 
   private IdAndUuid insertPermissionTemplate(String organizationUuid) {

@@ -46,7 +46,7 @@ public class AddApplicationCreatorAndPortfolioCreatorToSonarAdministrator extend
       return;
     }
 
-    Integer sonarAdmGroupId = context.prepareSelect("SELECT id FROM groups WHERE name=?")
+    Integer sonarAdmGroupId = context.prepareSelect("SELECT id FROM `groups` WHERE name=?")
       .setString(1, "sonar-administrators")
       .get(r -> r.getInt(1));
 

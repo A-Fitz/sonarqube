@@ -79,7 +79,7 @@ public class SearchGroupsAction implements QProfileWsAction {
   public void define(WebService.NewController context) {
     WebService.NewAction action = context
       .createAction(ACTION_SEARCH_GROUPS)
-      .setDescription("List the groups that are allowed to edit a Quality Profile.<br>" +
+      .setDescription("List the `groups` that are allowed to edit a Quality Profile.<br>" +
         "Requires one of the following permissions:" +
         "<ul>" +
         "  <li>'Administer Quality Profiles'</li>" +

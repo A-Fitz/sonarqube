@@ -16,14 +16,14 @@
   <select id="selectByName" parameterType="map" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     where g.organization_uuid = #{organizationUuid,jdbcType=VARCHAR} and g.name = #{name,jdbcType=VARCHAR}
   </select>
 
   <select id="selectByIds" parameterType="int" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     where g.id in
     <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
       #{id,jdbcType=BIGINT}
@@ -33,7 +33,7 @@
   <select id="selectById" parameterType="int" resultType="Group">
     SELECT
     <include refid="groupColumns"/>
-    FROM groups g
+    FROM `groups` g
     <where>
       g.id=#{id,jdbcType=BIGINT}
     </where>
@@ -56,7 +56,7 @@
   <select id="selectByUserLogin" parameterType="string" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     inner join groups_users gu on gu.group_id = g.id
     inner join users u on u.id = gu.user_id
     where  u.login=#{login,jdbcType=VARCHAR}
@@ -65,7 +65,7 @@
   <select id="selectByNames" parameterType="map" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     where
       g.organization_uuid = #{organizationUuid,jdbcType=VARCHAR} and
       g.name in
@@ -91,7 +91,7 @@
   </insert>
 
   <update id="update" parameterType="Group">
-    UPDATE groups SET
+    UPDATE `groups` SET
     name=#{name,jdbcType=VARCHAR},
     description=#{description,jdbcType=VARCHAR},
     updated_at=#{updatedAt,jdbcType=TIMESTAMP}
@@ -101,7 +101,7 @@
   <select id="selectByQuery" parameterType="map" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     where
     organization_uuid = #{organizationUuid,jdbcType=VARCHAR}
     <if test="query!=null">
@@ -112,7 +112,7 @@
 
   <select id="countByQuery" parameterType="map" resultType="int">
     select count(1)
-    from groups g
+    from `groups` g
     where
     organization_uuid = #{organizationUuid,jdbcType=VARCHAR}
     <if test="query!=null">
@@ -123,7 +123,7 @@
   <select id="countGroupByOrganizationAndId" parameterType="map" resultType="int">
     select
       count(1)
-    from groups g
+    from `groups` g
     where
       g.organization_uuid = #{organizationUuid,jdbcType=VARCHAR}
       and g.id = #{groupId,jdbcType=INTEGER}
@@ -132,7 +132,7 @@
   <select id="selectByOrganizationUuid" parameterType="map" resultType="Group">
     select
     <include refid="groupColumns"/>
-    from groups g
+    from `groups` g
     where g.organization_uuid = #{organizationUuid,jdbcType=VARCHAR}
     order by upper(g.name)
   </select>

@@ -74,9 +74,9 @@ public class GroupsAction implements PermissionsWsAction {
     WebService.NewAction action = context.createAction("groups")
       .setSince("5.2")
       .setInternal(true)
-      .setDescription("Lists the groups with their permissions.<br>" +
+      .setDescription("Lists the `groups` with their permissions.<br>" +
         "This service defaults to global permissions, but can be limited to project permissions by providing project id or project key.<br> " +
-        "This service defaults to all groups, but can be limited to groups with a specific permission by providing the desired permission.<br>" +
+        "This service defaults to all groups, but can be limited to `groups` with a specific permission by providing the desired permission.<br>" +
         "Requires one of the following permissions:" +
         "<ul>" +
         "<li>'Administer System'</li>" +
@@ -84,7 +84,7 @@ public class GroupsAction implements PermissionsWsAction {
         "</ul>")
       .addPagingParams(DEFAULT_PAGE_SIZE, RESULTS_MAX_SIZE)
       .setChangelog(
-        new Change("7.4", "The response list is returning all groups even those without permissions, the groups with permission are at the top of the list."))
+        new Change("7.4", "The response list is returning all `groups` even those without permissions, the `groups` with permission are at the top of the list."))
       .setResponseExample(Resources.getResource(getClass(), "groups-example.json"))
       .setHandler(this);
 
